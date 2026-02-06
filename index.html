@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Sexy ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff4e8a, #ff1e56);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      max-width: 350px;
+      animation: fadeIn 2s ease;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background: #ff1e56;
+      color: white;
+    }
+
+    .no {
+      background: #ffffff;
+      color: #ff1e56;
+      position: absolute;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="music" src="love.mp3"></audio>
+
+  <div class="card">
+    <img src="sexy.jpg" alt="My Valentine">
+    <h1>Hey Sexy 😘</h1>
+    <p>
+      Every heartbeat of mine knows one thing…  
+      I want *you* to be my Valentine ❤️
+    </p>
+    <h2>Will you be mine?</h2>
+    <button class="yes" onclick="sayYes()">YES 💖</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">NO 😜</button>
+  </div>
+
+  <script>
+    const music = document.getElementById("music");
+
+    document.body.addEventListener("click", () => {
+      music.play();
+    }, { once: true });
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="text-align:center; color:white;">
+          <h1>YAY!!! 😍💘</h1>
+          <p>You just made me the happiest person alive.</p>
+          <p>Happy Valentine’s Day, Sexy ❤️</p>
+        </div>
+      `;
+      createHearts();
+    }
+
+    function moveNo() {
+      const btn = document.getElementById("noBtn");
+      btn.style.top = Math.random() * 80 + "%";
+      btn.style.left = Math.random() * 80 + "%";
+    }
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
